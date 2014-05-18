@@ -10,6 +10,7 @@ env:
 install:
  - go get github.com/ant0ine/go-urlrouter
  - go get github.com/lestrrat/go-xslate
+ - go get code.google.com/p/go.tools/cmd/cover
  - go get github.com/axw/gocov/gocov
  - go get github.com/mattn/goveralls
 
