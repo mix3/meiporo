@@ -1,0 +1,11 @@
+language: go
+
+go:
+ - 1.2
+
+install
+- go get github.com/ant0ine/go-urlrouter
+- go get github.com/lestrrat/go-xslate
+
+script:
+ - go test -v ./...
