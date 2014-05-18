@@ -3,9 +3,16 @@ language: go
 go:
  - 1.2
 
+env:
+ grobal:
+  - secure: "EgKPr/5fDmh79JkmHjeLu2g23WtSuqy4BOt+Lcc1fWW0L0RWXkTCL7ucNC923HY3whhtWgGnNM6xMqJ9lleARVlA6cHdbByJTANW8r12pqf0G902hLgG+Z0SlNLQZPuTmpDlVBZDqZl1Sv3Wj8tcwtMmT6EV/y6etYN59KxNxSo="
+
 install:
  - go get github.com/ant0ine/go-urlrouter
  - go get github.com/lestrrat/go-xslate
+ - go get github.com/axw/gocov/gocov
+ - go get github.com/mattn/goveralls
 
 script:
  - go test -v ./...
+ - $HOME/gopath/bin/goveralls -repotoken=$COVERALLS_TOKEN
