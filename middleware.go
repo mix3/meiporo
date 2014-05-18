@@ -26,7 +26,7 @@ func (m *LoggerMiddleware) Handler() Handler {
 }
 
 type RecoverMiddleware struct {
-	RecoverHandler Handler
+	RecoverHandler func(*Context, interface{})
 }
 
 func (m *RecoverMiddleware) Handler() Handler {
@@ -34,7 +34,7 @@ func (m *RecoverMiddleware) Handler() Handler {
 		defer func() {
 			if err := recover(); err != nil {
 				if m.RecoverHandler != nil {
-					m.RecoverHandler(c)
+					m.RecoverHandler(c, err)
 				} else {
 					code := http.StatusInternalServerError
 					http.Error(c.Res, http.StatusText(code), code)
